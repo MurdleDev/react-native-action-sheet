@@ -24,6 +24,7 @@ type Props = ActionSheetOptions & {
 const BLACK_54PC_TRANSPARENT = '#0000008a';
 const BLACK_87PC_TRANSPARENT = '#000000de';
 const DESTRUCTIVE_COLOR = '#d32f2f';
+const RIPPLE_COLOR = 'rgba(180, 180, 180, 1)';
 
 /**
  * Can be used as a React ref for a component to auto-focus for accessibility on render.
@@ -131,10 +132,11 @@ export default class ActionGroup extends React.Component<Props> {
       tintColor,
       autoFocus,
       showSeparators,
+      rippleColor = RIPPLE_COLOR
     } = this.props;
     const optionViews: React.ReactNode[] = [];
     const nativeFeedbackBackground = TouchableNativeFeedbackSafe.Ripple(
-      'rgba(180, 180, 180, 1)',
+      rippleColor,
       false
     );
 

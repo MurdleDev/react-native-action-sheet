@@ -4,7 +4,6 @@ import {
   BackHandler,
   Easing,
   Modal,
-  NativeEventSubscription,
   Platform,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -39,7 +38,6 @@ const ESCAPE_KEY = 'Escape';
 // Has same API as https://facebook.github.io/react-native/docs/actionsheetios.html
 export default class CustomActionSheet extends React.Component<Props, State> {
   _actionSheetHeight = 360;
-  _backHandlerListener: NativeEventSubscription | undefined;
 
   state: State = {
     isVisible: false,
@@ -229,12 +227,8 @@ export default class CustomActionSheet extends React.Component<Props, State> {
         this._deferAfterAnimation = undefined;
       }
     });
-
-    this._backHandlerListener = BackHandler.addEventListener(
-      // @ts-ignore: Argument of type '"actionSheetHardwareBackPress"' is not assignable to parameter of type '"hardwareBackPress"'
-      'actionSheetHardwareBackPress',
-      this._selectCancelButton
-    );
+    // @ts-ignore: Argument of type '"actionSheetHardwareBackPress"' is not assignable to parameter of type '"hardwareBackPress"'
+    BackHandler.addEventListener('actionSheetHardwareBackPress', this._selectCancelButton);
   };
 
   _selectCancelButton = () => {
@@ -275,9 +269,8 @@ export default class CustomActionSheet extends React.Component<Props, State> {
       return false;
     }
 
-    if (this._backHandlerListener) {
-      this._backHandlerListener.remove();
-    }
+    // @ts-ignore: Argument of type '"actionSheetHardwareBackPress"' is not assignable to parameter of type '"hardwareBackPress"'
+    BackHandler.removeEventListener('actionSheetHardwareBackPress', this._selectCancelButton);
     this.setState({
       isAnimating: true,
     });
