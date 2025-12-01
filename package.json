@@ -1,6 +1,6 @@
 {
   "name": "@expo/react-native-action-sheet",
-  "version": "4.1.1",
+  "version": "4.0.1",
   "description": "A cross-platform ActionSheet for React Native",
   "react-native": "lib/module/index.js",
   "types": "lib/typescript/index.d.ts",
@@ -36,6 +36,7 @@
     "@react-native-community/bob": "^0.6.1",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
+    "@types/node": "^12.20.55",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.57.65",
     "eslint": "^7.32.0",
@@ -43,9 +44,9 @@
     "husky": "^3.0.0",
     "lint-staged": "^9.2.0",
     "prettier": "^2.3.2",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
-    "react-native": "0.69.9",
+    "react": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "semantic-release": "^19.0.3",
     "typescript": "^3.5.3"
   },
   "peerDependencies": {
